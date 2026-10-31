@@ -1,0 +1,66 @@
+EXPERIMENT NO. 2: ROBOT MOVEMENT USING TWO MOTORS
+
+1. AIM
+
+To write a Java program to create a robot with two motors and move it forward, left, and right using the RobotSim library.
+
+2. EXECUTION CODE
+
+File Name: SimEx1.java
+
+import ch.aplu.robotsim.*;
+
+public class SimEx1
+{
+    public SimEx1()
+    {
+        LegoRobot robot = new LegoRobot();
+
+        Motor motA = new Motor(MotorPort.A);
+        Motor motB = new Motor(MotorPort.B);
+
+        robot.addPart(motA);
+        robot.addPart(motB);
+
+        motA.forward();
+        motB.forward();
+
+        Tools.delay(2000);
+
+        motA.stop();
+        Tools.delay(2000);
+
+        motB.stop();
+        Tools.delay(2000);
+
+        motA.backward();
+        motB.forward();
+
+        Tools.delay(2000);
+
+        motB.backward();
+
+        Tools.delay(2000);
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new SimEx1();
+    }
+}
+
+3. THEORY
+
+A mobile robot is a machine capable of moving within its environment using motors, sensors, and a control system. A common movement mechanism is the differential-drive system, which uses two independently controlled motors connected to the left and right wheels.
+
+In this experiment, the LegoRobot class creates the robot in the simulation environment. Two Motor objects, motA and motB, are created using MotorPort.A and MotorPort.B and attached to the robot using the addPart() method.
+
+The forward() method rotates a motor in the forward direction, backward() rotates it in the opposite direction, and stop() stops the motor. The Tools.delay() method pauses program execution for a specified time in milliseconds, allowing the robot's movement to be observed.
+
+When both motors move forward, the robot moves forward. When the motors operate differently, the robot changes direction. Independent motor control allows the robot to perform forward movement, turns, and other basic navigation tasks.
+
+4. CONCLUSION
+
+The practical demonstrates the simulation of a two-motor robot using Java, RobotSim, and JGameGrid. By controlling the two motors independently, the robot performs forward movement, stopping, and directional changes. This experiment provides an understanding of differential-drive locomotion and basic robot motion control.
