@@ -1,0 +1,91 @@
+EXPERIMENT NO. 1: ROBOT MOVEMENT WITH AND WITHOUT GEAR
+
+1. AIM
+
+To write Java programs using the RobotSim library to create a robot (i) with Gear and (ii) without Gear, and move it forward, left, and right.
+
+2. EXECUTION CODE
+
+A) ROBOT WITH GEAR
+
+File Name: SimEx2.java
+
+import ch.aplu.robotsim.*;
+
+public class SimEx2
+{
+    public SimEx2()
+    {
+        LegoRobot robot = new LegoRobot();
+        Gear gear = new Gear();
+
+        robot.addPart(gear);
+
+        gear.forward();
+        Tools.delay(2000);
+
+        gear.left(2000);
+        gear.forward(2000);
+
+        gear.leftArc(0.2, 2000);
+        gear.forward(2000);
+
+        gear.leftArc(-0.2, 2000);
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new SimEx2();
+    }
+}
+
+
+B) ROBOT WITHOUT GEAR
+
+File Name: RobotWithoutGear.java
+
+import ch.aplu.robotsim.*;
+
+public class RobotWithoutGear
+{
+    public RobotWithoutGear()
+    {
+        TurtleRobot robot = new TurtleRobot();
+
+        robot.forward(1000);
+        robot.left(600);
+
+        robot.forward(1000);
+        robot.right(600);
+
+        robot.forward(1000);
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new RobotWithoutGear();
+    }
+}
+
+
+3. THEORY
+
+Robot simulation is used to study the movement and behaviour of robots in a virtual environment. The RobotSim library provides Java classes for creating robots and controlling their movements.
+
+Robot with Gear:
+The LegoRobot class represents the robot, and a Gear object is attached using the addPart() method. The Gear component provides movement methods such as forward(), left(), and leftArc(). The Tools.delay() method introduces a delay before the next movement command.
+
+Robot without Gear:
+The TurtleRobot class allows movement commands to be executed directly on the robot object. Methods such as forward(), left(), and right() control its movement and direction.
+
+The robot moves forward and changes direction according to the sequence of commands. The numerical arguments specify movement durations or parameters as defined by the RobotSim library. Arc movement allows the robot to follow a curved path.
+
+This experiment demonstrates basic robot navigation, directional control, movement sequencing, and the difference between controlling a robot through an attached Gear component and using direct movement commands.
+
+4. CONCLUSION
+
+The practical demonstrates how to control robot movement using Java and the RobotSim library. The robot performs forward movement, left and right turns, and arc movements using Gear-based and direct movement commands. This experiment helps develop an understanding of basic robot navigation and movement control.
