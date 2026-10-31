@@ -1,0 +1,80 @@
+EXPERIMENT NO. 4: LINE-FOLLOWING ROBOT USING LIGHT SENSOR
+
+1. AIM
+
+To write a Java program to create a robot with a light sensor that detects a line and follows it automatically using the RobotSim library.
+
+2. EXECUTION CODE
+
+File Name: FollowLn.java
+
+import ch.aplu.robotsim.*;
+import ch.aplu.jgamegrid.*;
+import java.awt.*;
+
+public class FollowLn implements LightListener
+{
+    private Gear gear = new Gear();
+
+    public FollowLn()
+    {
+        LegoRobot robot = new LegoRobot();
+
+        LightSensor ls = new LightSensor(SensorPort.S3);
+
+        robot.addPart(gear);
+        robot.addPart(ls);
+
+        ls.addLightListener(this, 500);
+
+        gear.forward();
+    }
+
+    public void bright(SensorPort port, int level)
+    {
+        gear.rightArc(0.15);
+    }
+
+    public void dark(SensorPort port, int level)
+    {
+        gear.leftArc(0.15);
+    }
+
+    public static void main(String[] args)
+    {
+        new FollowLn();
+    }
+
+    public static void _init(GameGrid gg)
+    {
+        GGBackground bg = gg.getBg();
+
+        bg.setPaintColor(Color.black);
+        bg.fillArc(new Point(250, 250), 50, 0, 360);
+        bg.fillArc(new Point(250, 350), 100, 0, 360);
+    }
+}
+
+3. THEORY
+
+A line-following robot is a robot that detects a line on a surface and follows it automatically using sensors and programmed movement commands.
+
+In this experiment, a LegoRobot is equipped with a Gear component and a LightSensor connected to sensor port S3. The Gear controls the robot's movement, while the light sensor detects differences between bright surfaces and dark lines.
+
+The program implements the LightListener interface, which provides two important methods:
+
+1. bright(SensorPort port, int level):
+   This method is called when the sensor detects a bright surface. The robot turns slightly to the right using gear.rightArc(0.15).
+
+2. dark(SensorPort port, int level):
+   This method is called when the sensor detects a dark surface. The robot turns slightly to the left using gear.leftArc(0.15).
+
+The addLightListener() method registers the sensor listener and specifies a checking interval of 500 milliseconds. The gear.forward() command starts the robot's forward movement.
+
+The _init() method customizes the simulation background by drawing black circular shapes using the JGameGrid library. These shapes help create the track environment for observing the robot's movement.
+
+By continuously responding to changes in light intensity, the robot adjusts its direction and demonstrates the basic principle of automatic line following.
+
+4. CONCLUSION
+
+The practical demonstrates how a light sensor can be used to control a robot's direction and achieve automatic line-following behaviour. Using the RobotSim and JGameGrid libraries, the robot moves forward and adjusts its direction according to bright and dark sensor readings. This experiment provides an understanding of sensor-based navigation and automated robot control.
