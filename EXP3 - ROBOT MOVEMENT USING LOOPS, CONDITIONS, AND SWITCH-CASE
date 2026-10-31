@@ -1,0 +1,176 @@
+EXPERIMENT NO. 3: ROBOT MOVEMENT USING LOOPS, CONDITIONS, AND SWITCH-CASE
+
+1. AIM
+
+To write programs to draw a square using a while loop, perform step movements using a for loop, change directions based on conditions, and control robot speed using a switch-case statement.
+
+2. EXECUTION CODE
+
+A) SQUARE USING WHILE LOOP
+
+File Name: Square.java
+
+import ch.aplu.robotsim.*;
+
+class Square
+{
+    Square()
+    {
+        TurtleRobot robot = new TurtleRobot();
+        int i = 0;
+
+        while (i < 4)
+        {
+            robot.forward(50);
+            robot.right(90);
+            i++;
+        }
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new Square();
+    }
+}
+
+
+B) DOING STEPS USING FOR LOOP
+
+File Name: Steps.java
+
+import ch.aplu.robotsim.*;
+
+class Steps
+{
+    Steps()
+    {
+        TurtleRobot robot = new TurtleRobot();
+
+        for (int i = 0; i < 4; i++)
+        {
+            robot.forward(20);
+            robot.right(90);
+            robot.forward(20);
+            robot.left(90);
+        }
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new Steps();
+    }
+}
+
+
+C) CHANGING DIRECTIONS BASED ON CONDITION
+
+File Name: RandomMove.java
+
+import ch.aplu.robotsim.*;
+
+class RandomMove
+{
+    RandomMove()
+    {
+        TurtleRobot robot = new TurtleRobot();
+
+        for (int i = 0; i < 7; i++)
+        {
+            double a = Math.random();
+
+            if (a < 0.5)
+                robot.right(90);
+            else
+                robot.left(90);
+
+            robot.forward(100);
+        }
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new RandomMove();
+    }
+}
+
+
+D) CONTROLLING ROBOT SPEED USING SWITCH-CASE
+
+File Name: SpeedSwitch.java
+
+import ch.aplu.robotsim.*;
+
+class SpeedSwitch
+{
+    SpeedSwitch()
+    {
+        TurtleRobot robot = new TurtleRobot();
+
+        for (int k = 1; k < 6; k++)
+        {
+            int speed;
+
+            switch (k)
+            {
+                case 1:
+                    speed = 20;
+                    break;
+
+                case 2:
+                    speed = 40;
+                    break;
+
+                case 3:
+                    speed = 60;
+                    break;
+
+                case 4:
+                    speed = 80;
+                    break;
+
+                default:
+                    speed = 50;
+            }
+
+            robot.setTurtleSpeed(speed);
+            robot.forward(200);
+            robot.right(90);
+        }
+
+        robot.exit();
+    }
+
+    public static void main(String[] args)
+    {
+        new SpeedSwitch();
+    }
+}
+
+
+3. THEORY
+
+Robot simulation allows us to study and control robot movements in a virtual environment. The RoboSim library provides the TurtleRobot class, which supports movement commands such as forward(), left(), right(), and setTurtleSpeed(). The exit() method closes the simulation.
+
+1. While Loop:
+A while loop repeatedly executes statements as long as a specified condition is true. In the Square program, the loop runs four times. The robot moves forward by 50 units and turns right by 90 degrees during each iteration, tracing a square.
+
+2. For Loop:
+A for loop is useful when the number of repetitions is known in advance. In the Steps program, the loop executes four times. The robot moves forward, turns right, moves forward again, and turns left to create a step-like path.
+
+3. If-Else Condition:
+The if-else statement allows a program to select an action based on a condition. In the RandomMove program, Math.random() generates a random number between 0.0 and 1.0. If the number is less than 0.5, the robot turns right; otherwise, it turns left. The robot then moves forward by 100 units. This process repeats seven times, creating a changing path.
+
+4. Switch-Case Statement:
+The switch-case statement selects an action based on the value of a variable. In the SpeedSwitch program, different speed values are assigned according to the loop counter. The robot's speed is set using setTurtleSpeed(), after which it moves forward and turns right. This demonstrates how different speed settings can be selected systematically.
+
+These programs demonstrate how Java control structures can be used to repeat movements, make decisions, change directions, and control a robot's movement speed.
+
+4. CONCLUSION
+
+This practical demonstrates the use of while loops, for loops, if-else conditions, and switch-case statements to control a TurtleRobot in RoboSim. The programs illustrate square drawing, step-like movement, conditional direction changes, and speed control. It provides an understanding of how Java programming constructs are applied to basic robot navigation and motion control.
