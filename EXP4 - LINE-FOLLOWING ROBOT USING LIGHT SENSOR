@@ -1,10 +1,9 @@
 EXPERIMENT NO. 4: LINE-FOLLOWING ROBOT USING LIGHT SENSOR
 
-1. AIM
+AIM
+To write a Java program to create a robot with a light sensor that detects changes in brightness and follows a line using the RobotSim library.
 
-To write a Java program to create a robot with a light sensor that detects a line and follows it automatically using the RobotSim library.
-
-2. EXECUTION CODE
+EXECUTION CODE
 
 File Name: FollowLn.java
 
@@ -14,46 +13,51 @@ import java.awt.*;
 
 public class FollowLn implements LightListener
 {
-    private Gear gear = new Gear();
+private Gear gear = new Gear();
 
-    public FollowLn()
-    {
-        LegoRobot robot = new LegoRobot();
 
-        LightSensor ls = new LightSensor(SensorPort.S3);
+public FollowLn()
+{
+    LegoRobot robot = new LegoRobot();
 
-        robot.addPart(gear);
-        robot.addPart(ls);
+    LightSensor ls = new LightSensor(SensorPort.S3);
 
-        ls.addLightListener(this, 500);
+    robot.addPart(gear);
+    robot.addPart(ls);
 
-        gear.forward();
-    }
+    ls.addLightListener(this, 500);
 
-    public void bright(SensorPort port, int level)
-    {
-        gear.rightArc(0.15);
-    }
-
-    public void dark(SensorPort port, int level)
-    {
-        gear.leftArc(0.15);
-    }
-
-    public static void main(String[] args)
-    {
-        new FollowLn();
-    }
-
-    public static void _init(GameGrid gg)
-    {
-        GGBackground bg = gg.getBg();
-
-        bg.setPaintColor(Color.black);
-        bg.fillArc(new Point(250, 250), 50, 0, 360);
-        bg.fillArc(new Point(250, 350), 100, 0, 360);
-    }
+    gear.forward();
 }
+
+public void bright(SensorPort port, int level)
+{
+    gear.rightArc(0.15);
+}
+
+public void dark(SensorPort port, int level)
+{
+    gear.leftArc(0.15);
+}
+
+public static void main(String[] args)
+{
+    new FollowLn();
+}
+
+public static void _init(GameGrid gg)
+{
+    GGBackground bg = gg.getBg();
+
+    bg.setPaintColor(Color.black);
+    bg.fillArc(new Point(250, 250), 50, 0, 360);
+    bg.fillArc(new Point(250, 350), 100, 0, 360);
+}
+
+
+}
+
+
 
 3. THEORY
 
