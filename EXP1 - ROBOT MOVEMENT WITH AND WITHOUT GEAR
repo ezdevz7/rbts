@@ -50,26 +50,38 @@ import ch.aplu.robotsim.*;
 
 public class RobotWithoutGear
 {
-    public RobotWithoutGear()
-    {
-        TurtleRobot robot = new TurtleRobot();
+public RobotWithoutGear()
+{
+TurtleRobot robot = new TurtleRobot();
 
-        robot.forward(1000);
-        robot.left(600);
 
-        robot.forward(1000);
-        robot.right(600);
+    // Move forward
+    robot.forward(100);
 
-        robot.forward(1000);
+    // Turn left by 90 degrees
+    robot.left(90);
 
-        robot.exit();
-    }
+    // Move forward
+    robot.forward(100);
 
-    public static void main(String[] args)
-    {
-        new RobotWithoutGear();
-    }
+    // Turn right by 90 degrees
+    robot.right(90);
+
+    // Move forward
+    robot.forward(100);
+
+    // Exit the simulator
+    robot.exit();
 }
+
+public static void main(String[] args)
+{
+    new RobotWithoutGear();
+}
+
+
+}
+
 
 
 3. THEORY
